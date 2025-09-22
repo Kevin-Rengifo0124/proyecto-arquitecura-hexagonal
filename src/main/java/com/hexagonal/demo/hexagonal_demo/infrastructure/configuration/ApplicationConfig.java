@@ -9,6 +9,7 @@ import com.hexagonal.demo.hexagonal_demo.infrastructure.adapter.ExternalServiceA
 import com.hexagonal.demo.hexagonal_demo.infrastructure.repository.JpaTaskRepositoryAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class ApplicationConfig {
@@ -36,7 +37,12 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public ExternalServicePort externalServicePort(){
-        return new ExternalServiceAdapter();
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+
+    @Bean
+    public ExternalServicePort externalServicePort(RestTemplate restTemplate) {
+        return new ExternalServiceAdapter(restTemplate);
     }
 }
