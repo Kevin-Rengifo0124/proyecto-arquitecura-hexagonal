@@ -4,12 +4,14 @@ import com.hexagonal.demo.hexagonal_demo.domain.model.Task;
 import com.hexagonal.demo.hexagonal_demo.domain.port.output.TaskRepositoryPort;
 import com.hexagonal.demo.hexagonal_demo.infrastructure.entity.TaskEntity;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
+@Component
 public class JpaTaskRepositoryAdapter implements TaskRepositoryPort {
 
     private final JpaTaskRepository jpaTaskRepository;
